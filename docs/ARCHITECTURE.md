@@ -1,210 +1,27 @@
-# Arsitektur Sistem — SyncNote
+# SyncNote Architecture
 
-## 1. Gambaran Umum Arsitektur
+## Current Implementation
 
-SyncNote menggunakan arsitektur klien-server dengan saluran komunikasi HTTP dan waktu nyata (*real-time*) yang terpisah.
+The frontend is a Next.js App Router application under `frontend/src`. It renders the workspace and makes a browser request to `/api/v1/health`. Next.js rewrites that path to the server-only `BACKEND_URL` (default `http://localhost:8080`).
 
-Tumpukan teknologi (*technology stack*):
+The Go service uses `net/http` and currently exposes only `GET /api/v1/health`. It has no database, authentication, document handlers, or real-time transport. Sample notes live only in frontend component state.
 
-Ujung Depan (*Frontend*):
-- Next.js
-- React
-- TypeScript
+```text
+Browser -> Next.js UI -> /api/v1/health rewrite -> Go HTTP server
+```
 
-Ujung Belakang (*Backend*):
-- Go
+## Planned Architecture
 
-Penyimpanan Persisten (*Persistence*):
-- PostgreSQL
+The intended system may grow to include authenticated REST document operations, durable document storage, and a separate real-time transport for editing and presence. A future design must define authorization, persistence semantics, synchronization, and reconnection behavior before implementing those capabilities.
 
-Status Sementara / Terdistribusi (*Transient / Distributed State*):
-- Redis
+PostgreSQL, Redis, WebSockets, presence, remote cursors, CRDTs, and collaborative editing are planned possibilities, not current dependencies or services. Their roles and the synchronization strategy remain subject to later design decisions.
 
-Komunikasi:
-- REST API
-- WebSocket
+## Current Boundaries
 
-## 2. Arsitektur Tingkat Tinggi
+- `frontend/src/app`: Next.js routes, root layout, and global styles.
+- `frontend/src/components/layout`: workspace shell.
+- `frontend/src/lib/api`: typed API request and health client.
+- `backend/cmd/server`: Go process entry point.
+- `backend/internal`: reserved for implementation code when it has a concrete owner; no packages are needed yet.
 
-                     ┌─────────────────────────┐
-                     │       Next.js App       │
-                     │                         │
-                     │ React UI                │
-                     │ Editor                  │
-                     │ Client State            │
-                     └───────────┬─────────────┘
-                                 │
-                    ┌────────────┴────────────┐
-                    │                         │
-                  HTTPS                     WebSocket
-                    │                         │
-                    ▼                         ▼
-             ┌──────────────────────────────────┐
-             │             Go API               │
-             │                                  │
-             │ HTTP Handlers                    │
-             │ Authentication                   │
-             │ Document Service                 │
-             │ Collaboration Service            │
-             │ WebSocket Hub                    │
-             └───────────┬───────────┬──────────┘
-                         │           │
-                         ▼           ▼
-                    PostgreSQL      Redis
-                    Persistent      Presence
-                    State           Pub/Sub
-
-## 3. Tanggung Jawab Komunikasi
-
-REST digunakan untuk operasi permintaan-tanggapan (*request-response*) seperti:
-
-- autentikasi;
-- pembuatan dokumen;
-- pengambilan dokumen;
-- penghapusan dokumen;
-- pembagian dokumen (*sharing*);
-- pembaruan metadata.
-
-WebSocket digunakan untuk peristiwa yang bersifat sementara dan waktu nyata (*ephemeral and real-time*):
-
-- operasi dokumen;
-- kehadiran (*presence*);
-- posisi kursor;
-- peristiwa bergabung/keluar (*join/leave events*);
-- peristiwa sinkronisasi.
-
-## 4. Tanggung Jawab Ujung Depan (Frontend)
-
-Ujung depan bertanggung jawab untuk:
-
-- merender antarmuka pengguna (UI) aplikasi;
-- mengelola status editor lokal;
-- pembaruan UI secara optimis (*optimistic UI updates*);
-- menetapkan koneksi WebSocket;
-- mengirim operasi lokal;
-- menerapkan operasi jarak jauh (*remote operations*);
-- menampilkan status koneksi;
-- menampilkan kehadiran kolaborator;
-- menangani penyambungan kembali (*reconnection*).
-
-Ujung depan tidak boleh dianggap sebagai sumber otoritatif untuk status dokumen yang persisten.
-
-## 5. Tanggung Jawab Ujung Belakang (Backend)
-
-Backend Go bertanggung jawab untuk:
-
-- autentikasi;
-- otorisasi;
-- aturan akses dokumen;
-- siklus hidup WebSocket;
-- manajemen ruang (*room management*);
-- validasi operasi;
-- menyiarkan peristiwa waktu nyata (*broadcasting*);
-- koordinasi penyimpanan persisten;
-- sinkronisasi.
-
-## 6. Tanggung Jawab PostgreSQL
-
-PostgreSQL menyimpan status aplikasi yang tahan lama (*durable*):
-
-- pengguna;
-- dokumen;
-- izin dokumen;
-- rekam jepret dokumen (*document snapshots*);
-- versi dokumen jika diperlukan.
-
-PostgreSQL adalah sumber kebenaran yang tahan lama (*durable source of truth*).
-
-## 7. Tanggung Jawab Redis
-
-Redis tidak boleh diperlakukan sebagai basis data dokumen utama pada tahap awal.
-
-Redis ditujukan untuk:
-
-- kehadiran sementara (*ephemeral presence*);
-- koordinasi WebSocket terdistribusi;
-- Pub/Sub;
-- status kolaborasi berumur pendek (*short-lived*);
-- penelusuran singgah (*caching*) opsional.
-
-Implementasi pertama dapat beroperasi tanpa Redis hingga koordinasi horizontal diperlukan.
-
-## 8. Hub WebSocket
-
-Setiap dokumen bertindak sebagai ruang kolaborasi logis.
-
-Contoh:
-
-document:550e8400
-    ├── client A
-    ├── client B
-    └── client C
-
-Hub WebSocket memelihara koneksi aktif dan menyiarkan peristiwa ke klien resmi yang terhubung ke dokumen yang sama.
-
-## 9. Direktori Paket Backend
-
-cmd/
-  server/
-
-internal/
-  auth/
-  document/
-  collaboration/
-  websocket/
-  repository/
-  platform/
-
-Dependensi umumnya harus mengalir dari atas ke bawah:
-
-transport
-    ↓
-service/domain
-    ↓
-repository
-    ↓
-infrastructure
-
-Penanganan HTTP dan WebSocket tidak boleh mengandung logika persisten atau logika domain secara langsung.
-
-## 10. Struktur Ujung Depan (Frontend)
-
-src/
-├── app/
-├── components/
-│   ├── ui/
-│   └── layout/
-├── features/
-│   ├── auth/
-│   ├── documents/
-│   └── collaboration/
-├── hooks/
-├── lib/
-├── services/
-├── stores/
-└── types/
-
-Logika khusus fitur harus tetap berada di dalam foldernya masing-masing jika memungkinkan.
-
-Komponen visual generik diletakkan di `components/ui`.
-
-## 11. Kategori Status
-
-Aplikasi membedakan tiga kategori status yang penting.
-
-Status persisten server:
-- metadata dokumen;
-- izin akses;
-- status dokumen yang disimpan.
-
-Status klien:
-- seleksi editor;
-- status UI;
-- operasi optimis yang tertunda.
-
-Status terdistribusi sementara (*ephemeral*):
-- pengguna yang terhubung;
-- posisi kursor;
-- informasi kolaborasi sementara.
-
-Status-status ini tidak boleh dicampuradukkan secara sembarangan.
+The foundation intentionally uses no frontend state library, HTTP framework, ORM, or dependency-injection framework.

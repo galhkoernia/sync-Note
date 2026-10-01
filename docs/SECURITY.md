@@ -1,53 +1,13 @@
-# Keamanan — SyncNote
+# SyncNote Security
 
-## Autentikasi
+## Current Implementation
 
-Koneksi WebSocket harus diautentikasi.
+The application has no user accounts, authentication, authorization, document persistence, or collaboration transport. The health endpoint is public and returns service status only. The frontend uses mock content and sends no credentials.
 
-Membuka koneksi WebSocket tidak serta-merta mengesahkan (*authorize*) akses ke sebuah dokumen.
+`BACKEND_URL` is read by the Next.js server rewrite and must not use a `NEXT_PUBLIC_` prefix. Only the example value is committed; local environment files are ignored.
 
-## Otorisasi
+## Planned Requirements
 
-Setiap koneksi dokumen harus diverifikasi keanggotaannya.
+Before adding user or document operations, define authentication, session handling, document-level authorization, input validation, and safe logging. A future real-time transport must authenticate and authorize document access before joining a room, validate origins and message schemas, and enforce payload and connection limits.
 
-REST:
-autentikasi -> otorisasi -> eksekusi
-
-WebSocket:
-koneksi -> autentikasi -> otorisasi dokumen -> bergabung ke ruang (*join room*)
-
-## Validasi Masukan (*Input Validation*)
-
-Jangan pernah mempercayai:
-
-- ID dokumen;
-- ID pengguna;
-- *payload* operasi;
-- posisi kursor;
-- metadata yang dihasilkan oleh klien.
-
-## Kata Sandi (*Passwords*)
-
-Kata sandi tidak boleh disimpan secara langsung.
-
-Gunakan algoritma *hashing* kata sandi yang sesuai seperti Argon2id atau bcrypt.
-
-## Keamanan WebSocket
-
-Terapkan:
-
-- autentikasi;
-- validasi asal (*origin validation*);
-- batas ukuran pesan;
-- validasi skema;
-- pembatasan tingkat akses (*rate limiting*);
-- batasan koneksi;
-- otorisasi sebelum pendaftaran ruang.
-
-## Pencatatan Log (*Logging*)
-
-Jangan pernah mencatat:
-
-- kata sandi;
-- rahasia autentikasi;
-- token sesi mentah.
+Never store raw passwords or log passwords, raw session tokens, or authentication secrets. These are design requirements for future work, not claims about implemented controls.

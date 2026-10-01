@@ -5,12 +5,13 @@ out/
 
 # Environment
 .env
-.env.local
-.env.*.local
+.env.*
+!.env.example
 
 # Go
 backend/bin/
 *.exe
+*.test
 
 # IDE
 .vscode/
