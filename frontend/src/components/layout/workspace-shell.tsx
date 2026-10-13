@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { getHealth } from "@/lib/api/health";
 import {
   demoDocuments,
@@ -112,6 +113,15 @@ export function WorkspaceShell() {
       <main className="main-panel" id="workspace-main" tabIndex={-1}>
         <header className="document-header">
           <div className="breadcrumb">
+            {!sidebarOpen && (
+              <Image
+                src="/branding/syncnote-mark.png"
+                alt="SyncNote"
+                width={24}
+                height={24}
+                className="desktop-toggle"
+              />
+            )}
             <button
               className="icon-button desktop-toggle"
               aria-label={sidebarOpen ? "Collapse sidebar" : "Expand sidebar"}

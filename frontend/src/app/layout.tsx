@@ -12,9 +12,34 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const description =
+  "SyncNote is a modern collaborative note-taking workspace designed to organize ideas, manage documents, and support seamless teamwork.";
+
 export const metadata: Metadata = {
-  title: "SyncNote",
-  description: "A quiet workspace for notes.",
+  metadataBase: new URL("https://syncnote.web.id"),
+  title: {
+    default: "SyncNote",
+    template: "%s | SyncNote",
+  },
+  description,
+  applicationName: "SyncNote",
+  // The root route currently renders a local demo workspace, not a public page.
+  robots: {
+    index: false,
+    follow: false,
+  },
+  openGraph: {
+    type: "website",
+    siteName: "SyncNote",
+    title: "SyncNote",
+    description,
+    url: "https://syncnote.web.id",
+  },
+  twitter: {
+    card: "summary",
+    title: "SyncNote",
+    description,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

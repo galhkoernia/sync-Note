@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   demoUsers,
   documentTitle,
@@ -42,9 +43,13 @@ export function WorkspaceSidebar({
   return (
     <aside className="sidebar" aria-label="Workspace navigation">
       <div className="brand">
-        <span className="brand-mark" aria-hidden="true">
-          s
-        </span>
+        <Image
+          src="/branding/syncnote-mark.png"
+          alt=""
+          width={28}
+          height={28}
+          className="brand-mark"
+        />
         <span>SyncNote</span>
         <button
           className="icon-button collapse-button"

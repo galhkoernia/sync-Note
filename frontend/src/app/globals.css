@@ -9,7 +9,7 @@
   --border-strong: #d5d5da;
   --muted: #ededf1;
   --muted-foreground: #696970;
-  --primary: #5146bd;
+  --primary: #4f46e5;
   --primary-foreground: #ffffff;
   --success: #437c54;
   --danger: #ad3939;
@@ -86,14 +86,10 @@ button {
   padding-left: 8px;
 }
 .brand-mark {
-  display: grid;
-  place-items: center;
   width: 28px;
   height: 28px;
-  color: var(--primary);
-  border: 1px solid var(--border-strong);
-  border-radius: 7px;
-  font-family: var(--font-geist-mono), monospace;
+  flex-shrink: 0;
+  object-fit: contain;
 }
 .icon-button {
   display: inline-grid;
