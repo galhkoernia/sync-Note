@@ -136,7 +136,7 @@ Contribution guidelines and licensing information will be published as part of t
 
 Software Engineering · Web Development
 
-GitHub: [@galh](https://github.com/galhkoernia)
+GitHub: [@galhkoernia](https://github.com/galhkoernia)
 
 ---
 
