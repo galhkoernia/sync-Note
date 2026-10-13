@@ -2,186 +2,233 @@
 
 import { useEffect, useState } from "react";
 import { getHealth } from "@/lib/api/health";
-
-type Note = {
-  id: string;
-  title: string;
-  content: string;
-};
-
-type HealthStatus = "loading" | "connected" | "unavailable";
-
-const initialNotes: Note[] = [
-  {
-    id: "weekly-planning",
-    title: "Weekly planning",
-    content:
-      "A few things to keep in view this week.\n\nReview the project outline and decide what belongs in the first release.\n\nCollect open questions before the next planning session.",
-  },
-  {
-    id: "project-notes",
-    title: "Project notes",
-    content:
-      "Ideas and references for the project.\n\nKeep the first version focused on a dependable writing space and a small, clear application shell.",
-  },
-  {
-    id: "reading-list",
-    title: "Reading list",
-    content:
-      "Notes to return to later.\n\nAdd a title or start writing here.",
-  },
-];
-
-const healthLabels: Record<HealthStatus, string> = {
-  loading: "Checking API",
-  connected: "API connected",
-  unavailable: "API unavailable",
-};
+import {
+  demoDocuments,
+  demoUsers,
+  documentTitle,
+  type DemoDocument,
+  type WorkspaceView,
+} from "@/lib/workspace/demo-data";
+import { WorkspaceSidebar, type HealthStatus } from "./workspace-sidebar";
+import { WorkspaceDialog } from "./workspace-dialog";
+import { WorkspaceHome } from "../workspace/workspace-home";
+import { DocumentEditor } from "../workspace/document-editor";
 
 export function WorkspaceShell() {
-  const [notes, setNotes] = useState(initialNotes);
-  const [selectedId, setSelectedId] = useState(initialNotes[0].id);
+  const [documents, setDocuments] = useState(demoDocuments);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [view, setView] = useState<WorkspaceView>("Home");
+  const [query, setQuery] = useState("");
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [shareOpen, setShareOpen] = useState(false);
+  const [deleteId, setDeleteId] = useState<string | null>(null);
   const [healthStatus, setHealthStatus] = useState<HealthStatus>("loading");
-  const [hasChanges, setHasChanges] = useState(false);
-  const selectedNote = notes.find((note) => note.id === selectedId) ?? notes[0];
-
+  const selected = documents.find((doc) => doc.id === selectedId);
+  const deleting = documents.find((doc) => doc.id === deleteId);
   useEffect(() => {
-    let isMounted = true;
-
+    let mounted = true;
     getHealth()
       .then(() => {
-        if (isMounted) setHealthStatus("connected");
+        if (mounted) setHealthStatus("connected");
       })
       .catch(() => {
-        if (isMounted) setHealthStatus("unavailable");
+        if (mounted) setHealthStatus("unavailable");
       });
-
     return () => {
-      isMounted = false;
+      mounted = false;
     };
   }, []);
-
-  function createNote() {
-    const note: Note = {
-      id: crypto.randomUUID(),
-      title: "Untitled note",
-      content: "",
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 767px)");
+    const closeDrawer = () => {
+      if (!media.matches) setDrawerOpen(false);
     };
-
-    setNotes((currentNotes) => [note, ...currentNotes]);
-    setSelectedId(note.id);
-    setHasChanges(false);
+    media.addEventListener("change", closeDrawer);
+    return () => media.removeEventListener("change", closeDrawer);
+  }, []);
+  function navigate(nextView: WorkspaceView) {
+    setView(nextView);
+    setSelectedId(null);
+    setDrawerOpen(false);
   }
-
-  function updateSelectedNote(field: "title" | "content", value: string) {
-    setNotes((currentNotes) =>
-      currentNotes.map((note) =>
-        note.id === selectedId ? { ...note, [field]: value } : note,
+  function select(id: string) {
+    setSelectedId(id);
+    setDrawerOpen(false);
+  }
+  function createDocument() {
+    const doc: DemoDocument = {
+      id: crypto.randomUUID(),
+      title: "",
+      content: "",
+      updatedAt: new Date().toISOString(),
+      authorId: demoUsers[0].id,
+    };
+    setDocuments((current) => [doc, ...current]);
+    select(doc.id);
+  }
+  function updateDocument(field: "title" | "content", value: string) {
+    setDocuments((current) =>
+      current.map((doc) =>
+        doc.id === selectedId
+          ? { ...doc, [field]: value, updatedAt: new Date().toISOString() }
+          : doc,
       ),
     );
-    setHasChanges(true);
   }
-
+  function deleteDocument() {
+    setDocuments((current) => current.filter((doc) => doc.id !== deleteId));
+    if (selectedId === deleteId) navigate("Documents");
+    setDeleteId(null);
+  }
+  const sidebarProps = {
+    documents,
+    view,
+    selectedId,
+    healthStatus,
+    onNavigate: navigate,
+    onSelect: select,
+    onCreate: createDocument,
+  };
   return (
-    <div className="workspace">
-      <aside className="sidebar" aria-label="Workspace navigation">
-        <div className="brand">
-          <span className="brand-mark" aria-hidden="true">
-            s
-          </span>
-          <span>SyncNote</span>
+    <div className={`workspace ${sidebarOpen ? "" : "sidebar-collapsed"}`}>
+      <a className="skip-link" href="#workspace-main">
+        Skip to workspace
+      </a>
+      {sidebarOpen && (
+        <div className="desktop-sidebar">
+          <WorkspaceSidebar {...sidebarProps} onClose={() => setSidebarOpen(false)} />
         </div>
-
-        <button className="new-note" onClick={createNote} type="button">
-          <span className="plus" aria-hidden="true">
-            +
-          </span>
-          New note
-        </button>
-
-        <div className="section-label">Documents</div>
-        <nav className="document-list" aria-label="Documents">
-          {notes.map((note) => (
-            <button
-              aria-current={note.id === selectedNote.id ? "page" : undefined}
-              className="document-link"
-              key={note.id}
-              onClick={() => {
-                setSelectedId(note.id);
-                setHasChanges(false);
-              }}
-              type="button"
-            >
-              {note.title || "Untitled note"}
-            </button>
-          ))}
-        </nav>
-
-        <div className="sidebar-footer">
-          <div className="api-status" data-status={healthStatus} role="status">
-            <span className="status-dot" aria-hidden="true" />
-            {healthLabels[healthStatus]}
-          </div>
-          <div className="profile">
-            <span className="profile-avatar" aria-hidden="true">
-              G
-            </span>
-            <span>
-              Guest
-              <span className="profile-caption">Local workspace</span>
-            </span>
-          </div>
-        </div>
-      </aside>
-
-      <main className="main-panel">
+      )}
+      {drawerOpen && (
+        <WorkspaceDialog
+          title="Workspace navigation"
+          drawer
+          onClose={() => setDrawerOpen(false)}
+        >
+          <WorkspaceSidebar {...sidebarProps} onClose={() => setDrawerOpen(false)} />
+        </WorkspaceDialog>
+      )}
+      <main className="main-panel" id="workspace-main" tabIndex={-1}>
         <header className="document-header">
-          <div className="document-heading">
-            <h1>{selectedNote.title || "Untitled note"}</h1>
-            <div className="document-state">
-              {hasChanges ? "Unsaved changes" : "Sample document · not saved"}
-            </div>
+          <div className="breadcrumb">
+            <button
+              className="icon-button desktop-toggle"
+              aria-label={sidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
+              aria-expanded={sidebarOpen}
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+            >
+              ☰
+            </button>
+            <button
+              className="icon-button mobile-toggle"
+              aria-label="Open navigation"
+              aria-expanded={drawerOpen}
+              onClick={() => setDrawerOpen(true)}
+            >
+              ☰
+            </button>
+            <button className="breadcrumb-home" onClick={() => navigate("Home")}>
+              Workspace
+            </button>
+            <span aria-hidden="true">/</span>
+            <span className="truncate">{selected ? documentTitle(selected) : view}</span>
           </div>
           <div className="header-actions">
-            <div className="collaborators" aria-label="Static collaborator examples">
-              <span className="collaborator-avatar" aria-hidden="true">
-                JD
-              </span>
-              <span className="collaborator-avatar" aria-hidden="true">
-                AM
-              </span>
-            </div>
-            <button
-              className="share-button"
-              disabled
-              title="Sharing is not available yet"
-              type="button"
-            >
-              Share
-            </button>
+            {selected ? (
+              <>
+                <div
+                  className="collaborators"
+                  aria-label="Demo collaborators: Galuh Kurnia and Ekawati; no live presence"
+                >
+                  {demoUsers.map((user) => (
+                    <span key={user.id} className="avatar" title={`${user.name} · demo`}>
+                      {user.initials}
+                    </span>
+                  ))}
+                </div>
+                <button className="secondary-button" onClick={() => setShareOpen(true)}>
+                  Share <span className="share-caption">· Preview</span>
+                </button>
+              </>
+            ) : (
+              <span className="demo-label">Demo workspace</span>
+            )}
           </div>
         </header>
-
-        <section className="editor-scroll" aria-label="Document editor">
-          <div className="editor">
-            <textarea
-              aria-label="Document title"
-              className="editor-title"
-              onChange={(event) => updateSelectedNote("title", event.target.value)}
-              placeholder="Untitled note"
-              rows={1}
-              value={selectedNote.title}
+        <div className="workspace-scroll">
+          {selected ? (
+            <DocumentEditor
+              key={selected.id}
+              document={selected}
+              onUpdate={updateDocument}
+              onDelete={() => setDeleteId(selected.id)}
             />
-            <textarea
-              aria-label="Document content"
-              className="editor-content"
-              onChange={(event) => updateSelectedNote("content", event.target.value)}
-              placeholder="Start writing..."
-              value={selectedNote.content}
+          ) : (
+            <WorkspaceHome
+              key={view}
+              view={view}
+              documents={documents}
+              query={query}
+              onQuery={setQuery}
+              onSelect={select}
+              onCreate={createDocument}
             />
-          </div>
-        </section>
+          )}
+        </div>
       </main>
+      {shareOpen && (
+        <WorkspaceDialog title="Sharing preview" onClose={() => setShareOpen(false)}>
+          <span className="demo-label">Demo · Coming soon</span>
+          <p>
+            Sharing and live collaboration are not available yet. These people are static
+            examples; no invitation or document is sent.
+          </p>
+          <div className="preview-users">
+            {demoUsers.map((user) => (
+              <div className="profile" key={user.id}>
+                <span className="avatar">{user.initials}</span>
+                <span>
+                  {user.name}
+                  <span className="profile-caption">
+                    {user.id === "galuh"
+                      ? "Workspace user · demo"
+                      : "Collaborator example · demo"}
+                  </span>
+                </span>
+              </div>
+            ))}
+          </div>
+          <div className="dialog-buttons">
+            <button className="secondary-button" onClick={() => setShareOpen(false)}>
+              Close preview
+            </button>
+            <button className="primary-button" disabled>
+              Invite · Coming soon
+            </button>
+          </div>
+        </WorkspaceDialog>
+      )}
+      {deleting && (
+        <WorkspaceDialog title="Delete this document?" onClose={() => setDeleteId(null)}>
+          <p>
+            “{documentTitle(deleting)}” will be removed from this local session. This
+            action cannot be undone.
+          </p>
+          <div className="dialog-buttons">
+            <button
+              className="secondary-button"
+              autoFocus
+              onClick={() => setDeleteId(null)}
+            >
+              Keep document
+            </button>
+            <button className="danger-button" onClick={deleteDocument}>
+              Delete document
+            </button>
+          </div>
+        </WorkspaceDialog>
+      )}
     </div>
   );
 }
