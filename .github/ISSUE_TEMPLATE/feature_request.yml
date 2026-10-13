@@ -1,0 +1,44 @@
+name: Feature request
+description: Propose a problem to solve or an improvement to SyncNote.
+title: "[Feature]: "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem being addressed
+      description: What user need or problem would this address?
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: Describe the change you would like to see.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: What alternatives have you considered, if any?
+    validations:
+      required: false
+  - type: textarea
+    id: impact
+    attributes:
+      label: Expected impact
+      description: Who would benefit, and what would improve?
+    validations:
+      required: false
+  - type: dropdown
+    id: component
+    attributes:
+      label: Relevant component
+      options:
+        - Frontend
+        - Backend
+        - Documentation
+        - Infrastructure
+        - Multiple components
+    validations:
+      required: true

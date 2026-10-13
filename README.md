@@ -90,7 +90,8 @@ npm run build
 
 ```bash
 cd backend
-gofmt -w ./cmd/server/main.go
+gofmt -l ./cmd/server/main.go
+go vet ./...
 go test ./...
 ```
 
@@ -126,9 +127,9 @@ See [Architecture Documentation](docs/ARCHITECTURE.md) for additional informatio
 
 SyncNote is being developed with the intention of becoming an open-source project.
 
-Community contributions, issue reports, technical discussions, and improvement proposals will be welcome as the project matures.
+Community contributions, issue reports, technical discussions, and improvement proposals are welcome.
 
-Contribution guidelines and licensing information will be published as part of the project's open-source preparation.
+See [the contribution guidelines](.github/CONTRIBUTING.md) for setup, development checks, and the Pull Request workflow. Licensing information will be published as part of the project's open-source preparation.
 
 ## Main Developer
 

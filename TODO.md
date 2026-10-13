@@ -659,11 +659,11 @@ These are conceptual message names, not an approved or implemented protocol cont
 
 ## 8.2 CI/CD
 
-- [ ] Set up GitHub Actions.
-- [ ] Add frontend lint checks.
-- [ ] Add frontend production build checks.
-- [ ] Add backend formatting verification.
-- [ ] Add backend automated tests.
+- [x] Set up GitHub Actions.
+- [x] Add frontend lint checks.
+- [x] Add frontend production build checks.
+- [x] Add backend formatting verification.
+- [x] Add backend automated tests.
 - [ ] Add relevant integration tests.
 - [ ] Add dependency and security checks.
 - [ ] Protect the main branch with appropriate quality gates.
@@ -729,12 +729,12 @@ These are conceptual message names, not an approved or implemented protocol cont
 
 - [ ] Select an appropriate open-source license.
 - [ ] Add `LICENSE`.
-- [ ] Add `CONTRIBUTING.md`.
-- [ ] Add `CODE_OF_CONDUCT.md`.
+- [x] Add `CONTRIBUTING.md`.
+- [x] Add `CODE_OF_CONDUCT.md`.
 - [ ] Add `SECURITY.md` vulnerability reporting guidance.
-- [ ] Establish GitHub issue templates.
-- [ ] Establish pull request template.
-- [ ] Define contribution review workflow.
+- [x] Establish GitHub issue templates.
+- [x] Establish pull request template.
+- [x] Define contribution review workflow.
 - [ ] Define supported release versions.
 - [ ] Define maintainership responsibilities.
 
@@ -755,8 +755,8 @@ These are conceptual message names, not an approved or implemented protocol cont
   - `good first issue`
   - `help wanted`
 - [ ] Establish issue acceptance criteria.
-- [ ] Define branch naming conventions.
-- [ ] Establish pull request review checklist.
+- [x] Define branch naming conventions.
+- [x] Establish pull request review checklist.
 - [ ] Track known limitations and technical debt.
 
 ## 9.4 Public Release
