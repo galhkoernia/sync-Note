@@ -8,6 +8,8 @@
 
 SyncNote is an open-source-oriented, real-time collaborative note-taking application currently in its foundation milestone.
 
+![SyncNote home preview](docs/syncnote-home.svg)
+
 The project aims to provide a modern workspace for creating, organizing, and collaboratively editing notes. At this stage, SyncNote includes a Next.js frontend workspace and a lightweight Go REST API. Persistent document storage and real-time collaboration are planned for future development.
 
 ## Technology Stack

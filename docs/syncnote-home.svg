@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1902 1077" width="1902" height="1077" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" xmlns:c2pa="http://c2pa.org/manifest">
+  <defs>
+    <symbol id="docicon" viewBox="0 0 20 20">
+      <rect x="2" y="3" width="16" height="14" rx="1.5" fill="none" stroke="#3f3f46" stroke-width="1.5"/>
+      <path d="M5 7h10M5 10h10M5 13h10" stroke="#3f3f46" stroke-width="1.5"/>
+    </symbol>
+    <symbol id="smalldoc" viewBox="0 0 14 14">
+      <rect x="1.5" y="2" width="11" height="10" rx="1" fill="none" stroke="#52525b" stroke-width="1.2"/>
+      <path d="M4 5h6M4 7.5h6M4 10h6" stroke="#52525b" stroke-width="1"/>
+    </symbol>
+    <clipPath id="page"><rect width="1902" height="1077"/></clipPath>
+  </defs>
+
+  <g clip-path="url(#page)">
+    <!-- backgrounds -->
+    <rect width="1902" height="1077" fill="#fafaf9"/>
+    <rect width="327" height="1077" fill="#f4f4f5"/>
+    <line x1="327.5" y1="0" x2="327.5" y2="1077" stroke="#e4e4e7"/>
+    <line x1="328" y1="64.5" x2="1902" y2="64.5" stroke="#e4e4e7"/>
+
+    <!-- ===== SIDEBAR ===== -->
+    <!-- logo -->
+    <rect x="30" y="27" width="34" height="34" rx="9" fill="#6366f1"/>
+    <path d="M40 52V37l14 15V37" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="78" y="50" font-size="23" font-weight="700" fill="#18181b">SyncNote</text>
+    <text x="276" y="52" font-size="24" font-weight="700" fill="#52525b">«</text>
+
+    <text x="29" y="104" font-size="14" fill="#52525b">Personal workspace</text>
+    <rect x="171.5" y="86.5" width="54" height="28" rx="6" fill="#f4f4f5" stroke="#e4e4e7"/>
+    <text x="181" y="105" font-size="13" fill="#52525b">Demo</text>
+
+    <!-- nav -->
+    <rect x="18" y="146" width="290" height="60" rx="8" fill="#e4e2f8"/>
+    <path d="M37 183v-10l7-6 7 6v10z" fill="none" stroke="#4f46e5" stroke-width="1.6" stroke-linejoin="round"/>
+    <text x="70" y="182" font-size="19" font-weight="500" fill="#4f46e5">Home</text>
+
+    <circle cx="45" cy="238" r="5" fill="none" stroke="#52525b" stroke-width="1.5"/>
+    <path d="M41 242l-4 4" stroke="#52525b" stroke-width="1.5" stroke-linecap="round"/>
+    <text x="70" y="246" font-size="19" fill="#3f3f46">Search</text>
+
+    <circle cx="44" cy="303" r="9" fill="none" stroke="#52525b" stroke-width="1.6"/>
+    <path d="M44 297v6h5" fill="none" stroke="#52525b" stroke-width="1.6"/>
+    <text x="70" y="310" font-size="19" fill="#3f3f46">Recent</text>
+
+    <use href="#docicon" x="33" y="356" width="22" height="22"/>
+    <text x="70" y="373" font-size="19" fill="#3f3f46">Documents</text>
+
+    <text x="31" y="462" font-size="14" font-weight="500" fill="#52525b">Your documents</text>
+    <path d="M278 458h14M285 451v14" stroke="#52525b" stroke-width="1.6" stroke-linecap="round"/>
+
+    <use href="#smalldoc" x="31" y="500" width="14" height="14"/>
+    <text x="57" y="513" font-size="16" fill="#3f3f46">A little room for the week</text>
+    <use href="#smalldoc" x="31" y="555" width="14" height="14"/>
+    <text x="57" y="568" font-size="16" fill="#3f3f46">SyncNote · interface notes</text>
+    <use href="#smalldoc" x="31" y="609" width="14" height="14"/>
+    <text x="57" y="622" font-size="16" fill="#3f3f46">Learning journal</text>
+
+    <rect x="21.5" y="666.5" width="284" height="48" rx="8" fill="#fff" stroke="#d4d4d8"/>
+    <text x="163" y="696" font-size="15" text-anchor="middle" fill="#27272a">+ New document</text>
+
+    <line x1="19" y1="882.5" x2="308" y2="882.5" stroke="#e4e4e7"/>
+    <text x="29" y="921" font-size="14" fill="#52525b">Demo workspace · drafts stay in this tab</text>
+    <text x="29" y="945" font-size="14" fill="#52525b">until reload.</text>
+    <circle cx="32" cy="982" r="3.5" fill="#dc2626"/>
+    <text x="46" y="986" font-size="14" fill="#52525b">API unavailable</text>
+
+    <!-- user (N badge removed) -->
+    <text x="80" y="1027" font-size="16" fill="#27272a">Galuh Kurnia</text>
+    <text x="80" y="1052" font-size="13" fill="#71717a">Personal workspace · demo</text>
+
+    <!-- ===== TOP BAR ===== -->
+    <path d="M373 20h18M373 28h18M373 36h18" stroke="#52525b" stroke-width="1.8"/>
+    <text x="421" y="33" font-size="16" fill="#52525b">Workspace</text>
+    <text x="517" y="33" font-size="16" fill="#a1a1aa">/</text>
+    <text x="540" y="33" font-size="16" fill="#18181b">Home</text>
+    <rect x="1766.5" y="13.5" width="123" height="29" rx="6" fill="#fff" stroke="#e4e4e7"/>
+    <text x="1778" y="32" font-size="13" fill="#52525b">Demo workspace</text>
+
+    <!-- ===== MAIN ===== -->
+    <text x="543" y="136" font-size="13" letter-spacing="1.6" fill="#52525b">YOUR SPACE TO THINK</text>
+    <text x="543" y="205" font-size="48" font-weight="700" letter-spacing="-1.5" fill="#18181b">Welcome back, Galuh.</text>
+    <text x="543" y="252" font-size="17" fill="#52525b">A little space for your notes, ideas, and what comes next.</text>
+
+    <rect x="1528" y="187" width="158" height="47" rx="7" fill="#4338ca"/>
+    <text x="1607" y="216" font-size="16" font-weight="600" text-anchor="middle" fill="#fff">+ New document</text>
+
+    <!-- Recent documents -->
+    <text x="543" y="343" font-size="19" font-weight="500" fill="#18181b">Recent documents</text>
+    <line x1="543" y1="368.5" x2="1686" y2="368.5" stroke="#e4e4e7"/>
+    <rect x="543" y="369" width="1143" height="110" fill="#f0f0ef"/>
+    <line x1="543" y1="479.5" x2="1686" y2="479.5" stroke="#e4e4e7"/>
+    <line x1="543" y1="590.5" x2="1686" y2="590.5" stroke="#e4e4e7"/>
+
+    <!-- recent row 1 -->
+    <rect x="554.5" y="398.5" width="43" height="51" rx="6" fill="#fff" stroke="#e4e4e7"/>
+    <use href="#docicon" x="564" y="412" width="23" height="23"/>
+    <text x="619" y="413" font-size="17" font-weight="500" fill="#18181b">A little room for the week</text>
+    <text x="619" y="447" font-size="15.5" fill="#52525b">A clear mind starts with a little space. These are the things I want to focus on this week. Make pro</text>
+    <text x="1642" y="414" font-size="13" text-anchor="end" fill="#52525b">Galuh Kurnia</text>
+    <text x="1642" y="443" font-size="13" text-anchor="end" fill="#52525b">Oct 13 · Local draft</text>
+    <path d="M1665 430l8-8m0 0h-5m5 0v5" fill="none" stroke="#71717a" stroke-width="1.2"/>
+
+    <!-- recent row 2 -->
+    <rect x="554.5" y="509.5" width="43" height="51" rx="6" fill="#fff" stroke="#e4e4e7"/>
+    <use href="#docicon" x="564" y="523" width="23" height="23"/>
+    <text x="619" y="524" font-size="17" font-weight="500" fill="#18181b">SyncNote · interface notes</text>
+    <text x="619" y="558" font-size="15.5" fill="#52525b">The goal is a dependable, quiet writing space. Keep the first version focused on readable typography</text>
+    <text x="1642" y="525" font-size="13" text-anchor="end" fill="#52525b">Galuh Kurnia</text>
+    <text x="1642" y="554" font-size="13" text-anchor="end" fill="#52525b">Oct 12 · Local draft</text>
+    <path d="M1665 541l8-8m0 0h-5m5 0v5" fill="none" stroke="#71717a" stroke-width="1.2"/>
+
+    <!-- All documents -->
+    <text x="543" y="663" font-size="19" font-weight="500" fill="#18181b">All documents</text>
+    <text x="1686" y="661" font-size="14" text-anchor="end" fill="#52525b">3 documents</text>
+    <line x1="543" y1="689.5" x2="1686" y2="689.5" stroke="#e4e4e7"/>
+    <line x1="543" y1="799.5" x2="1686" y2="799.5" stroke="#e4e4e7"/>
+    <line x1="543" y1="910.5" x2="1686" y2="910.5" stroke="#e4e4e7"/>
+    <line x1="543" y1="1021.5" x2="1686" y2="1021.5" stroke="#e4e4e7"/>
+
+    <!-- all row 1 -->
+    <rect x="554.5" y="719.5" width="43" height="51" rx="6" fill="#fff" stroke="#e4e4e7"/>
+    <use href="#docicon" x="564" y="733" width="23" height="23"/>
+    <text x="619" y="734" font-size="17" font-weight="500" fill="#18181b">A little room for the week</text>
+    <text x="619" y="767" font-size="15.5" fill="#52525b">A clear mind starts with a little space. These are the things I want to focus on this week. Make pro</text>
+    <text x="1642" y="735" font-size="13" text-anchor="end" fill="#52525b">Galuh Kurnia</text>
+    <text x="1642" y="764" font-size="13" text-anchor="end" fill="#52525b">Oct 13 · Local draft</text>
+    <path d="M1665 751l8-8m0 0h-5m5 0v5" fill="none" stroke="#71717a" stroke-width="1.2"/>
+
+    <!-- all row 2 -->
+    <rect x="554.5" y="829.5" width="43" height="51" rx="6" fill="#fff" stroke="#e4e4e7"/>
+    <use href="#docicon" x="564" y="843" width="23" height="23"/>
+    <text x="619" y="844" font-size="17" font-weight="500" fill="#18181b">SyncNote · interface notes</text>
+    <text x="619" y="878" font-size="15.5" fill="#52525b">The goal is a dependable, quiet writing space. Keep the first version focused on readable typography</text>
+    <text x="1642" y="846" font-size="13" text-anchor="end" fill="#52525b">Galuh Kurnia</text>
+    <text x="1642" y="875" font-size="13" text-anchor="end" fill="#52525b">Oct 12 · Local draft</text>
+    <path d="M1665 862l8-8m0 0h-5m5 0v5" fill="none" stroke="#71717a" stroke-width="1.2"/>
+
+    <!-- all row 3 -->
+    <rect x="554.5" y="940.5" width="43" height="51" rx="6" fill="#fff" stroke="#e4e4e7"/>
+    <use href="#docicon" x="564" y="954" width="23" height="23"/>
+    <text x="619" y="955" font-size="17" font-weight="500" fill="#18181b">Learning journal</text>
+    <text x="619" y="989" font-size="15.5" fill="#52525b">Small ideas worth returning to. TypeScript Use explicit types at boundaries. Keep local UI models se</text>
+    <text x="1642" y="957" font-size="13" text-anchor="end" fill="#52525b">Ekawati</text>
+    <text x="1642" y="986" font-size="13" text-anchor="end" fill="#52525b">Oct 11 · Local draft</text>
+    <path d="M1665 973l8-8m0 0h-5m5 0v5" fill="none" stroke="#71717a" stroke-width="1.2"/>
+
+    <text x="543" y="1076" font-size="13" fill="#52525b">Demo content · No persistence or live collaboration</text>
+  </g>
+<metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTozMzA3MGIyZC00YjI4LTQyMTItODUwMi00MTkyNzE1ZGYxZDIAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaA8xttab/rUkj5GJLSYNs8IAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDowYmE1ODg3ZC03MGNkLTRhOTktYWQ4Yi03ODMyNjJmNDI5OWVscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNo9X4oTYlDOuM+3FO761LCnQAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggj746n+OPeXchouQNiO5KH88A9NWtnQdc1pDtF53iZvykZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaJvNygkL8q0rHvlnAZwDSFgAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRMAAAAAAAAAAAAAAAAZGhhc2hYICgnyUIpNj1vLt3maZs3IFkgIvsnm4g2S5vs5GV+4Hx+ZG5hbWVuanVtYmYgbWFuaWZlc3RqZXhjbHVzaW9uc4GiZXN0YXJ0GSajZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjMzMDcwYjJkLTRiMjgtNDIxMi04NTAyLTQxOTI3MTVkZjFkMi9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOmEzMTJiNGU4LTU3MjctNGE2NS1hYTYyLWQ3ODE1MTkyZTQwMnJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCCPvjqf4495dyGi5A2I7kofzwD01a2dB1zWkO0XneJm/KJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggmfI3+JHUbjh/uMfngyd0euG1ggSWVRyojhNGmA4J4zGiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggFKh7rKkDlHoRlVrx/vYUSPVtQqwAvgU6J/UB7sBnTch0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQADYN47fF9gNPcPtITFqWwowgQqAQ2b9DVZUUzdKbmPdnlxyxWp/fgA0mdNBo8jp6VQ8bsqJ9VYRfOm0TF9vHzo=</c2pa:manifest></metadata></svg>
